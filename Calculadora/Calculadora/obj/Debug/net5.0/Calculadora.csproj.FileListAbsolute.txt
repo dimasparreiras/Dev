@@ -1,0 +1,16 @@
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\bin\Debug\net5.0\Calculadora.exe
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\bin\Debug\net5.0\Calculadora.deps.json
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\bin\Debug\net5.0\Calculadora.runtimeconfig.json
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\bin\Debug\net5.0\Calculadora.runtimeconfig.dev.json
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\bin\Debug\net5.0\Calculadora.dll
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\bin\Debug\net5.0\ref\Calculadora.dll
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\bin\Debug\net5.0\Calculadora.pdb
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.csproj.AssemblyReference.cache
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.GeneratedMSBuildEditorConfig.editorconfig
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.AssemblyInfoInputs.cache
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.AssemblyInfo.cs
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.csproj.CoreCompileInputs.cache
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.dll
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\ref\Calculadora.dll
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.pdb
+D:\Google Drive\Desenvolvimento\Dev\Calc\Calculadora\Calculadora\obj\Debug\net5.0\Calculadora.genruntimeconfig.cache

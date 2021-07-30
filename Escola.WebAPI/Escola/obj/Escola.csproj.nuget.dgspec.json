@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dimas\\source\\repos\\Escola.WebAPI\\Escola\\Escola.csproj": {}
+    "D:\\Google Drive\\Desenvolvimento\\Dev_SmartSchool_WebAPI\\Escola.WebAPI\\Escola\\Escola.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dimas\\source\\repos\\Escola.WebAPI\\Escola\\Escola.csproj": {
+    "D:\\Google Drive\\Desenvolvimento\\Dev_SmartSchool_WebAPI\\Escola.WebAPI\\Escola\\Escola.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dimas\\source\\repos\\Escola.WebAPI\\Escola\\Escola.csproj",
+        "projectUniqueName": "D:\\Google Drive\\Desenvolvimento\\Dev_SmartSchool_WebAPI\\Escola.WebAPI\\Escola\\Escola.csproj",
         "projectName": "Escola",
-        "projectPath": "C:\\Users\\dimas\\source\\repos\\Escola.WebAPI\\Escola\\Escola.csproj",
+        "projectPath": "D:\\Google Drive\\Desenvolvimento\\Dev_SmartSchool_WebAPI\\Escola.WebAPI\\Escola\\Escola.csproj",
         "packagesPath": "C:\\Users\\dimas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dimas\\source\\repos\\Escola.WebAPI\\Escola\\obj\\",
+        "outputPath": "D:\\Google Drive\\Desenvolvimento\\Dev_SmartSchool_WebAPI\\Escola.WebAPI\\Escola\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dimas\\AppData\\Roaming\\NuGet\\NuGet.Config",

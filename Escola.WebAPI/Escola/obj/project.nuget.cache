@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ytktuhhLV6ukD/1OD5ox/1/5sO6zspqC/MwL4w8EJpj2p2VlIK6Use7zQgxSTcqgS3HfLDTDsAU5CjhtIKatVw==",
+  "dgSpecHash": "ysTF/YHEEbL46zHgxOiNMDkZ4rTLcS//FNdv0Ji82YJq8ur1oSJIIsR/zHBbQiRMWYMiMi97pGAsGp+ufQze5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dimas\\source\\repos\\Escola.WebAPI\\Escola\\Escola.csproj",
+  "projectFilePath": "D:\\Google Drive\\Desenvolvimento\\Dev_SmartSchool_WebAPI\\Escola.WebAPI\\Escola\\Escola.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dimas\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\dimas\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

@@ -9,7 +9,7 @@ namespace Escola.Models
     {
         public Professor() { }
         public Professor(int id, string nome)
-        {
+        { 
             this.Id = id;
             this.Nome = nome;
 

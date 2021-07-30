@@ -1,5 +1,7 @@
-﻿using Escola.Models;
+﻿using Escola.Data;
+using Escola.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,37 +13,21 @@ namespace Escola.Controllers
     [Route("api/[controller]")]
     public class AlunoController : ControllerBase
     {
-        public List<Aluno> Alunos = new List<Aluno>()
+        private readonly EscolaContext _context;
+
+        public AlunoController(EscolaContext context)
         {
-            new Aluno() {
-                Id = 1,
-                Nome = "Dimas",
-                Sobrenome = "Parreiras",
-                Telefone = "37999851327"
-            },
-            new Aluno() {
-                Id = 2,
-                Nome = "Filipe",
-                Sobrenome = "Nascimento",
-                Telefone = "37999850852"
-            },
-            new Aluno() {
-                Id = 3,
-                Nome = "Guilherme",
-                Sobrenome = "Silva",
-                Telefone = "37999846352"
-            },
-        };
-        public AlunoController() { }
+            _context = context;
+        }
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(Alunos);
+            return Ok(_context.Alunos);
         }
         [HttpGet("byId")]
         public IActionResult GetById(int id)
         {
-            var aluno = Alunos.FirstOrDefault(a => a.Id == id);
+            var aluno = _context.Alunos.FirstOrDefault(a => a.Id == id);
             if (aluno == null)
                 return BadRequest("O código de aluno informado não está registrado!");
             else
@@ -51,7 +37,7 @@ namespace Escola.Controllers
         [HttpGet("byName")]
         public IActionResult GetByName(string nome, string sobrenome)
         {
-            var aluno = Alunos.FirstOrDefault(
+            var aluno = _context.Alunos.FirstOrDefault(
                 a => a.Nome.Contains(nome) && a.Sobrenome.Contains(sobrenome));
             if (aluno == null)
                 return BadRequest("O código de aluno informado não está registrado!");
@@ -61,22 +47,40 @@ namespace Escola.Controllers
         [HttpPost]
         public IActionResult Post(Aluno aluno)
         {
+            _context.Add(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
         [HttpPut("{id}")]
         public IActionResult Put(int id, Aluno aluno)
         {
+            if (_context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id) == null)
+                return BadRequest("O aluno informado não está registrado!");
+            _context.Update(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Aluno aluno)
         {
+            if (_context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id) == null)
+                return BadRequest("O aluno informado não está registrado!");
+            _context.Add(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok("Cadastro deletado!");
+            var aluno = _context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id);
+            if (aluno == null)
+                return BadRequest("O aluno informado não está registrado!");
+            else
+            {
+                _context.Remove(aluno);
+                _context.SaveChanges();
+                return Ok(aluno);
+            }
         }
     }
 }

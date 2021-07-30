@@ -65,7 +65,7 @@ namespace Escola.Controllers
         {
             if (_context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id) == null)
                 return BadRequest("O aluno informado não está registrado!");
-            _context.Add(aluno);
+            _context.Update(aluno);
             _context.SaveChanges();
             return Ok(aluno);
         }

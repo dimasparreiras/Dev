@@ -13,74 +13,76 @@ namespace Escola.Controllers
     [Route("api/[controller]")]
     public class AlunoController : ControllerBase
     {
-        private readonly EscolaContext _context;
 
-        public AlunoController(EscolaContext context)
+        private readonly IRepository _repo;
+        public AlunoController(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
+
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.Alunos);
+            var result = _repo.GetAllAlunos(true);
+            return Ok(result);
         }
+
         [HttpGet("byId")]
         public IActionResult GetById(int id)
         {
-            var aluno = _context.Alunos.FirstOrDefault(a => a.Id == id);
+            var aluno = _repo.GetAlunoById(id, true);
             if (aluno == null)
                 return BadRequest("O código de aluno informado não está registrado!");
             else
                 return Ok(aluno);
         }
 
-        [HttpGet("byName")]
-        public IActionResult GetByName(string nome, string sobrenome)
-        {
-            var aluno = _context.Alunos.FirstOrDefault(
-                a => a.Nome.Contains(nome) && a.Sobrenome.Contains(sobrenome));
-            if (aluno == null)
-                return BadRequest("O código de aluno informado não está registrado!");
-            else
-                return Ok(aluno);
-        }
         [HttpPost]
         public IActionResult Post(Aluno aluno)
         {
-            _context.Add(aluno);
-            _context.SaveChanges();
-            return Ok(aluno);
+            _repo.Add(aluno);
+            if (_repo.SaveChanges())
+                return Ok(aluno);
+            else
+                return BadRequest("Erro ao cadastrar aluno!");
         }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, Aluno aluno)
         {
-            if (_context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id) == null)
-                return BadRequest("O aluno informado não está registrado!");
-            _context.Update(aluno);
-            _context.SaveChanges();
-            return Ok(aluno);
+            var alu = _repo.GetAlunoById(id);
+            if (alu == null)
+                return BadRequest("O código de aluno informado não está registrado!");
+            _repo.Update(aluno);
+            if (_repo.SaveChanges())
+                return Ok(aluno);
+            else
+                return BadRequest("Erro ao atualizar o cadastro do aluno!");
         }
+
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Aluno aluno)
         {
-            if (_context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id) == null)
-                return BadRequest("O aluno informado não está registrado!");
-            _context.Update(aluno);
-            _context.SaveChanges();
-            return Ok(aluno);
+            var alu = _repo.GetAlunoById(id);
+            if (alu == null)
+                return BadRequest("O código de aluno informado não está registrado!");
+            _repo.Update(aluno);
+            if (_repo.SaveChanges())
+                return Ok(aluno);
+            else
+                return BadRequest("Erro ao atualizar o cadastro do aluno!");
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var aluno = _context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id);
+            var aluno = _repo.GetAlunoById(id);
             if (aluno == null)
-                return BadRequest("O aluno informado não está registrado!");
+                return BadRequest("O código de aluno informado não está registrado!");
+            _repo.Delete(aluno);
+            if (_repo.SaveChanges())
+                return Ok("Cadastro deletado com sucesso");
             else
-            {
-                _context.Remove(aluno);
-                _context.SaveChanges();
-                return Ok(aluno);
-            }
+                return BadRequest("Erro ao excluir o cadastro do aluno!");
         }
     }
 }

@@ -13,74 +13,74 @@ namespace Escola.Controllers
     [Route("api/[controller]")]
     public class ProfessorController : ControllerBase
     {
-        private readonly EscolaContext _context;
+        private readonly IRepository _repo;
 
-        public ProfessorController(EscolaContext context)
+        public ProfessorController(IRepository repo)
         {
-            _context = context;
+            repo = repo;
         }
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.Professores);
+            var result = _repo.GetAllProfessores(true);
+            return Ok(result);
         }
         [HttpGet("byId")]
         public IActionResult GetById(int id)
         {
-            var prof = _context.Professores.FirstOrDefault(a => a.Id == id);
-            if (prof == null)
-                return BadRequest("O código informado não pertence a nenhum Professor!");
+            var professor = _repo.GetProfessorById(id, true);
+            if (professor == null)
+                return BadRequest("O código de professor informado não está registrado!");
             else
-                return Ok(prof);
+                return Ok(professor);
         }
 
-        [HttpGet("byName")]
-        public IActionResult GetByName(string nome)
-        {
-            var prof = _context.Professores.FirstOrDefault(
-                a => a.Nome.Contains(nome));
-            if (prof == null)
-                return BadRequest("O código de aluno informado não está registrado!");
-            else
-                return Ok(prof);
-        }
+
         [HttpPost]
         public IActionResult Post(Professor professor)
         {
-            _context.Add(professor);
-            _context.SaveChanges();
-            return Ok(professor);
+            _repo.Add(professor);
+            if (_repo.SaveChanges())
+                return Ok(professor);
+            else
+                return BadRequest("Erro ao cadastrar professor!");
         }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, Professor professor)
         {
-            if (_context.Professores.AsNoTracking().FirstOrDefault(a => a.Id == id) == null)
-                return BadRequest("O aluno informado não está registrado!");
-            _context.Update(professor);
-            _context.SaveChanges();
-            return Ok(professor);
+            var prof = _repo.GetProfessorById(id);
+            if (prof == null)
+                return BadRequest("O código de professor informado não está registrado!");
+            _repo.Update(professor);
+            if (_repo.SaveChanges())
+                return Ok(professor);
+            else
+                return BadRequest("Erro ao atualizar o cadastro do professor!");
         }
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Professor professor)
         {
-            if (_context.Professores.AsNoTracking().FirstOrDefault(a => a.Id == id) == null)
-                return BadRequest("O aluno informado não está registrado!");
-            _context.Update(professor);
-            _context.SaveChanges();
-            return Ok(professor);
+            var prof = _repo.GetProfessorById(id);
+            if (prof == null)
+                return BadRequest("O código de professor informado não está registrado!");
+            _repo.Update(professor);
+            if (_repo.SaveChanges())
+                return Ok(professor);
+            else
+                return BadRequest("Erro ao atualizar o cadastro do professor!");
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var prof = _context.Professores.AsNoTracking().FirstOrDefault(a => a.Id == id);
-            if (prof == null)
-                return BadRequest("O aluno informado não está registrado!");
+            var professor = _repo.GetProfessorById(id);
+            if (professor == null)
+                return BadRequest("O código de aluno informado não está registrado!");
+            _repo.Delete(professor);
+            if (_repo.SaveChanges())
+                return Ok("Cadastro deletado com sucesso");
             else
-            {
-                _context.Remove(prof);
-                _context.SaveChanges();
-                return Ok(prof);
-            }
+                return BadRequest("Erro ao excluir o cadastro do aluno!");
         }
 
     }

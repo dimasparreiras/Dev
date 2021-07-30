@@ -238,3 +238,6 @@ D:\Google Drive\Desenvolvimento\Dev_SmartSchool_WebAPI\Escola.WebAPI\Escola\obj\
 D:\Google Drive\Desenvolvimento\Dev_SmartSchool_WebAPI\Escola.WebAPI\Escola\obj\Debug\netcoreapp3.1\Escola.dll
 D:\Google Drive\Desenvolvimento\Dev_SmartSchool_WebAPI\Escola.WebAPI\Escola\obj\Debug\netcoreapp3.1\Escola.pdb
 D:\Google Drive\Desenvolvimento\Dev_SmartSchool_WebAPI\Escola.WebAPI\Escola\obj\Debug\netcoreapp3.1\Escola.genruntimeconfig.cache
+D:\Google Drive\Desenvolvimento\Dev_SmartSchool_WebAPI\Escola.WebAPI\Escola\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Google Drive\Desenvolvimento\Dev_SmartSchool_WebAPI\Escola.WebAPI\Escola\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Google Drive\Desenvolvimento\Dev_SmartSchool_WebAPI\Escola.WebAPI\Escola\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

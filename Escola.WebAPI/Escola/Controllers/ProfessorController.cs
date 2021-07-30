@@ -9,6 +9,9 @@ using System.Threading.Tasks;
  
 namespace Escola.Controllers
 {
+    /// <summary>
+    /// Controle de Professores
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ProfessorController : ControllerBase
@@ -17,14 +20,24 @@ namespace Escola.Controllers
 
         public ProfessorController(IRepository repo)
         {
-            repo = repo;
+            _repo = repo;
         }
+
+        /// <summary>
+        /// Método responsável por retornar todos os professores
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
             var result = _repo.GetAllProfessores(true);
             return Ok(result);
         }
+
+        /// <summary>
+        /// Método responsável por retornar um professor conforme ID informada
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("byId")]
         public IActionResult GetById(int id)
         {
@@ -35,7 +48,10 @@ namespace Escola.Controllers
                 return Ok(professor);
         }
 
-
+        /// <summary>
+        /// Método responsável por inserir o cadastro de um professor
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(Professor professor)
         {
@@ -46,6 +62,10 @@ namespace Escola.Controllers
                 return BadRequest("Erro ao cadastrar professor!");
         }
 
+        /// <summary>
+        /// Método responsável por atualizar cadastro de um professor
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Professor professor)
         {
@@ -58,6 +78,10 @@ namespace Escola.Controllers
             else
                 return BadRequest("Erro ao atualizar o cadastro do professor!");
         }
+        /// <summary>
+        /// Método responsável por atualizar cadastro de um professor
+        /// </summary>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Professor professor)
         {
@@ -70,6 +94,10 @@ namespace Escola.Controllers
             else
                 return BadRequest("Erro ao atualizar o cadastro do professor!");
         }
+        /// <summary>
+        /// Método responsável por remover o cadastro de um professor
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

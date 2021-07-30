@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Escola</name>
+    </assembly>
+    <members>
+        <member name="T:Escola.Controllers.AlunoController">
+            <summary>
+            Controle de Alunos
+            </summary>
+        </member>
+        <member name="M:Escola.Controllers.AlunoController.Get">
+            <summary>
+            Método responsável por retornar todos os alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um aluno conforme ID informada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.AlunoController.Post(Escola.Models.Aluno)">
+            <summary>
+            Método responsável por adicionar novos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.AlunoController.Put(System.Int32,Escola.Models.Aluno)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.AlunoController.Patch(System.Int32,Escola.Models.Aluno)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.AlunoController.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar o cadastro de um aluno
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Escola.Controllers.ProfessorController">
+            <summary>
+            Controle de Professores
+            </summary>
+        </member>
+        <member name="M:Escola.Controllers.ProfessorController.Get">
+            <summary>
+            Método responsável por retornar todos os professores
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.ProfessorController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um professor conforme ID informada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.ProfessorController.Post(Escola.Models.Professor)">
+            <summary>
+            Método responsável por inserir o cadastro de um professor
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.ProfessorController.Put(System.Int32,Escola.Models.Professor)">
+            <summary>
+            Método responsável por atualizar cadastro de um professor
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.ProfessorController.Patch(System.Int32,Escola.Models.Professor)">
+            <summary>
+            Método responsável por atualizar cadastro de um professor
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Controllers.ProfessorController.Delete(System.Int32)">
+            <summary>
+            Método responsável por remover o cadastro de um professor
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

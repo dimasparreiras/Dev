@@ -10,7 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
  
 namespace Escola
@@ -30,10 +32,28 @@ namespace Escola
             services.AddDbContext<EscolaContext>(
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
-            services.AddScoped<IRepository, Repository>();
-
+            
             services.AddControllers().AddNewtonsoftJson(
                 opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddScoped<IRepository, Repository>();
+
+            services.AddSwaggerGen( options =>
+            {
+                options.SwaggerDoc("escolaapi",
+                new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Escola API",
+                    Version = "1.0"
+                });
+
+                var XmlCommnetsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var XmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, XmlCommnetsFile);
+
+                options.IncludeXmlComments(XmlCommentsFullPath);
+
+            });
+                
 
         }
 
@@ -48,7 +68,12 @@ namespace Escola
             //app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/escolaapi/swagger.json", "escolaapi");
+                options.RoutePrefix = "";
+            });
             //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

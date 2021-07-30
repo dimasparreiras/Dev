@@ -4,15 +4,12 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:6970",
-      "sslPort": 44309
+      "applicationUrl": "http://localhost:6970"
     }
   }, 
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "api/aluno",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

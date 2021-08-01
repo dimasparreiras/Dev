@@ -1,4 +1,5 @@
-﻿using Escola.Data;
+﻿using Escola.Application;
+using Escola.Data;
 using Escola.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,11 @@ namespace Escola.Controllers
     [Route("api/[controller]")]
     public class ProfessorController : ControllerBase
     {
-        private readonly IRepository _repo;
+        private readonly IProfessorAplicacao _professorAplicacao;
 
-        public ProfessorController(IRepository repo)
-        {
-            _repo = repo;
+        public ProfessorController(IProfessorAplicacao professorAplicacao)
+        { 
+            _professorAplicacao = professorAplicacao;
         }
 
         /// <summary>
@@ -30,8 +31,7 @@ namespace Escola.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllProfessores(true);
-            return Ok(result);
+            return Ok(_professorAplicacao.Get());
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Escola.Controllers
         [HttpGet("byId")]
         public IActionResult GetById(int id)
         {
-            var professor = _repo.GetProfessorById(id, true);
+            var professor = _professorAplicacao.GetById(id);
             if (professor == null)
                 return BadRequest("O código de professor informado não está registrado!");
             else
@@ -55,8 +55,8 @@ namespace Escola.Controllers
         [HttpPost]
         public IActionResult Post(Professor professor)
         {
-            _repo.Add(professor);
-            if (_repo.SaveChanges())
+            bool result = _professorAplicacao.Post(professor);
+            if (result)
                 return Ok(professor);
             else
                 return BadRequest("Erro ao cadastrar professor!");
@@ -65,15 +65,17 @@ namespace Escola.Controllers
         /// <summary>
         /// Método responsável por atualizar cadastro de um professor
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// 1 - Professor cadastrado
+        /// 2 - O código de professor informado não está registrado
+        /// 3 - Erro ao atualizar o cadastro do professor</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Professor professor)
         {
-            var prof = _repo.GetProfessorById(id);
-            if (prof == null)
+            int result = _professorAplicacao.Put(id, professor);
+            if (result == 2)
                 return BadRequest("O código de professor informado não está registrado!");
-            _repo.Update(professor);
-            if (_repo.SaveChanges())
+            else if (result == 1)
                 return Ok(professor);
             else
                 return BadRequest("Erro ao atualizar o cadastro do professor!");
@@ -85,11 +87,10 @@ namespace Escola.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Professor professor)
         {
-            var prof = _repo.GetProfessorById(id);
-            if (prof == null)
+            int result = _professorAplicacao.Put(id, professor);
+            if (result == 2)
                 return BadRequest("O código de professor informado não está registrado!");
-            _repo.Update(professor);
-            if (_repo.SaveChanges())
+            else if (result == 1)
                 return Ok(professor);
             else
                 return BadRequest("Erro ao atualizar o cadastro do professor!");
@@ -101,11 +102,10 @@ namespace Escola.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var professor = _repo.GetProfessorById(id);
-            if (professor == null)
+            int result = _professorAplicacao.Delete(id);
+            if (result == 2)
                 return BadRequest("O código de aluno informado não está registrado!");
-            _repo.Delete(professor);
-            if (_repo.SaveChanges())
+            else if (result == 1)
                 return Ok("Cadastro deletado com sucesso");
             else
                 return BadRequest("Erro ao excluir o cadastro do aluno!");

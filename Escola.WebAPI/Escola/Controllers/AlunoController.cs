@@ -1,4 +1,5 @@
-﻿using Escola.Data;
+﻿using Escola.Application;
+using Escola.Data;
 using Escola.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,11 +18,11 @@ namespace Escola.Controllers
     [Route("api/[controller]")]
     public class AlunoController : ControllerBase
     {
+        private readonly IAlunoAplicacao _alunoAplicacao;
 
-        private readonly IRepository _repo;
-        public AlunoController(IRepository repo)
+        public AlunoController(IAlunoAplicacao alunoAplicacao)
         {
-            _repo = repo;
+            _alunoAplicacao = alunoAplicacao;
         }
 
         /// <summary>
@@ -31,8 +32,7 @@ namespace Escola.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllAlunos(true);
-            return Ok(result);
+            return Ok(_alunoAplicacao.Get());
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Escola.Controllers
         [HttpGet("byId")]
         public IActionResult GetById(int id)
         {
-            var aluno = _repo.GetAlunoById(id, true);
+            var aluno = _alunoAplicacao.GetById(id);
             if (aluno == null)
                 return BadRequest("O código de aluno informado não está registrado!");
             else
@@ -56,8 +56,8 @@ namespace Escola.Controllers
         [HttpPost]
         public IActionResult Post(Aluno aluno)
         {
-            _repo.Add(aluno);
-            if (_repo.SaveChanges())
+            bool result = _alunoAplicacao.Post(aluno);
+            if (result)
                 return Ok(aluno);
             else
                 return BadRequest("Erro ao cadastrar aluno!");
@@ -66,15 +66,18 @@ namespace Escola.Controllers
         /// <summary>
         /// Método responsável por atualizar o cadastro dos alunos
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// 1 - Aluno cadastrado
+        /// 2 - O código de aluno informado não está registrado
+        /// 3 - Erro ao atualizar o cadastro do aluno
+        /// </returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Aluno aluno)
         {
-            var alu = _repo.GetAlunoById(id);
-            if (alu == null)
+            int result = _alunoAplicacao.Put(id, aluno);
+            if (result == 2)
                 return BadRequest("O código de aluno informado não está registrado!");
-            _repo.Update(aluno);
-            if (_repo.SaveChanges())
+            else if (result == 1)
                 return Ok(aluno);
             else
                 return BadRequest("Erro ao atualizar o cadastro do aluno!");
@@ -87,11 +90,10 @@ namespace Escola.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Aluno aluno)
         {
-            var alu = _repo.GetAlunoById(id);
-            if (alu == null)
+            int result = _alunoAplicacao.Patch(id, aluno);
+            if (result == 2)
                 return BadRequest("O código de aluno informado não está registrado!");
-            _repo.Update(aluno);
-            if (_repo.SaveChanges())
+            else if (result == 1)
                 return Ok(aluno);
             else
                 return BadRequest("Erro ao atualizar o cadastro do aluno!");
@@ -105,14 +107,13 @@ namespace Escola.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var aluno = _repo.GetAlunoById(id);
-            if (aluno == null)
+            int result = _alunoAplicacao.Delete(id);
+            if (result == 2)
                 return BadRequest("O código de aluno informado não está registrado!");
-            _repo.Delete(aluno);
-            if (_repo.SaveChanges())
-                return Ok("Cadastro deletado com sucesso");
+            else if (result == 1)
+                return Ok("Aluno excluído com sucesso");
             else
-                return BadRequest("Erro ao excluir o cadastro do aluno!");
+                return BadRequest("Erro ao atualizar o cadastro do aluno!");
         }
     }
 }

@@ -4,6 +4,178 @@
         <name>Escola</name>
     </assembly>
     <members>
+        <member name="M:Escola.Application.AlunoAplicacao.Get">
+            <summary>
+            Método responsável por retornar todos os alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.AlunoAplicacao.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um aluno conforme ID informada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.AlunoAplicacao.Post(Escola.Models.Aluno)">
+            <summary>
+            Método responsável por adicionar novos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.AlunoAplicacao.Put(System.Int32,Escola.Models.Aluno)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns>
+            1 - Aluno cadastrado
+            2 - O código de aluno informado não está registrado
+            3 - Erro ao atualizar o cadastro do aluno
+            </returns>
+        </member>
+        <member name="M:Escola.Application.AlunoAplicacao.Patch(System.Int32,Escola.Models.Aluno)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns>
+            1 - Aluno cadastrado
+            2 - O código de aluno informado não está registrado
+            3 - Erro ao atualizar o cadastro do aluno
+            </returns>
+        </member>
+        <member name="M:Escola.Application.AlunoAplicacao.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar o cadastro de um aluno
+            </summary>
+            <param name="id"></param>
+            <returns>
+            1 - Aluno excluído
+            2 - O código de aluno informado não está registrado
+            3 - Erro ao excluir o cadastro do aluno
+            </returns>
+        </member>
+        <member name="M:Escola.Application.IAlunoAplicacao.Get">
+            <summary>
+            Método responsável por retornar todos os alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IAlunoAplicacao.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um aluno conforme ID informada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IAlunoAplicacao.Post(Escola.Models.Aluno)">
+            <summary>
+            Método responsável por adicionar novos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IAlunoAplicacao.Put(System.Int32,Escola.Models.Aluno)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IAlunoAplicacao.Patch(System.Int32,Escola.Models.Aluno)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IAlunoAplicacao.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar o cadastro de um aluno
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IProfessorAplicacao.Get">
+            <summary>
+            Método responsável por retornar todos os alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IProfessorAplicacao.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um aluno conforme ID informada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IProfessorAplicacao.Post(Escola.Models.Professor)">
+            <summary>
+            Método responsável por adicionar novos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IProfessorAplicacao.Put(System.Int32,Escola.Models.Professor)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IProfessorAplicacao.Patch(System.Int32,Escola.Models.Professor)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.IProfessorAplicacao.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar o cadastro de um aluno
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.ProfessorAplicacao.Get">
+            <summary>
+            Método responsável por retornar todos os alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.ProfessorAplicacao.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar um aluno conforme ID informada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.ProfessorAplicacao.Post(Escola.Models.Professor)">
+            <summary>
+            Método responsável por adicionar novos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Escola.Application.ProfessorAplicacao.Put(System.Int32,Escola.Models.Professor)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns>
+            1 - Professor cadastrado
+            2 - O código de professor informado não está registrado
+            3 - Erro ao atualizar o cadastro do professor
+            </returns>
+        </member>
+        <member name="M:Escola.Application.ProfessorAplicacao.Patch(System.Int32,Escola.Models.Professor)">
+            <summary>
+            Método responsável por atualizar o cadastro dos alunos
+            </summary>
+            <returns>
+            1 - Professor cadastrado
+            2 - O código de professor informado não está registrado
+            3 - Erro ao atualizar o cadastro do professor
+            </returns>
+        </member>
+        <member name="M:Escola.Application.ProfessorAplicacao.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar o cadastro de um aluno
+            </summary>
+            <param name="id"></param>
+            <returns>
+            1 - Professor excluído
+            2 - O código de professor informado não está registrado
+            3 - Erro ao excluir o cadastro do professor
+            </returns>
+        </member>
         <member name="T:Escola.Controllers.AlunoController">
             <summary>
             Controle de Alunos
@@ -31,7 +203,11 @@
             <summary>
             Método responsável por atualizar o cadastro dos alunos
             </summary>
-            <returns></returns>
+            <returns>
+            1 - Aluno cadastrado
+            2 - O código de aluno informado não está registrado
+            3 - Erro ao atualizar o cadastro do aluno
+            </returns>
         </member>
         <member name="M:Escola.Controllers.AlunoController.Patch(System.Int32,Escola.Models.Aluno)">
             <summary>
@@ -73,7 +249,10 @@
             <summary>
             Método responsável por atualizar cadastro de um professor
             </summary>
-            <returns></returns>
+            <returns>
+            1 - Professor cadastrado
+            2 - O código de professor informado não está registrado
+            3 - Erro ao atualizar o cadastro do professor</returns>
         </member>
         <member name="M:Escola.Controllers.ProfessorController.Patch(System.Int32,Escola.Models.Professor)">
             <summary>

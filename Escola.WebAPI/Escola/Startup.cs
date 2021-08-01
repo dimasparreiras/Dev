@@ -1,3 +1,4 @@
+using Escola.Application;
 using Escola.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +38,8 @@ namespace Escola
                 opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IAlunoAplicacao, AlunoAplicacao>();
+            services.AddScoped<IProfessorAplicacao, ProfessorAplicacao>();
 
             services.AddSwaggerGen( options =>
             {
